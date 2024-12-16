@@ -1,15 +1,21 @@
 import React from "react";
+import { Navbar, Nav, Container } from "react-bootstrap";
 
 function Navbar() {
   return (
-    <nav className="navbar">
-      <h1>OtakuMart</h1>
-      <div className="links">
-        <a href="/">Page 1</a>
-        <a href="/">Page 2</a>
-        <a href="/">Page 3</a>
-      </div>
-    </nav>
+    <Navbar bg="dark" variant="dark" expand="lg">
+      <Container>
+        <Navbar.Brand href="#home">OtakuMart</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#products">Products</Nav.Link>
+            <Nav.Link href="#bestsellers">Best Sellers</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
