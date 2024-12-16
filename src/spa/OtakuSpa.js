@@ -1,26 +1,62 @@
 import React from "react";
-import Card from "../components/common/Card";
-import "../styles.css";
+import "../spa/style.css";
+import { Carousel } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-// Import images explicitly
-import HeroBanner from "../../public/assets/HeroBanner";
-import BlueLock from "../../public/assets/BlueLock";
-import SpyXFamily from "../../public/assets/SpyXFamily";
-import Tshirt from "../../public/assets/tshirt.jpg";
-
-function OtakuSpa() {
+function OtakuMart() {
   return (
     <div>
-      {/* Top Section: Hero Banner */}
+      {/* Header */}
+      <header className="header">
+        <h1>OtakuMart</h1>
+        <nav>
+          <a href="#hero">Home</a>
+          <a href="#products">Products</a>
+          <a href="#best-sellers">Best Sellers</a>
+        </nav>
+      </header>
+      {/* Hero Section with Carousel */}
       <section id="hero" className="hero-section">
-        <div className="hero-container">
-          <img src={HeroBanner} alt="Hero Banner" />
-        </div>
-      </section>
+        <Carousel>
+          <Carousel.Item>
+            <img
+              className="d-block w-100 carousel-image"
+              src="./assets/HeroBanner.jpg"
+              alt="First Slide"
+            />
+            <Carousel.Caption>
+              <h3>Welcome to OtakuMart</h3>
+              <p>Your one-stop shop for anime merchandise!</p>
+            </Carousel.Caption>
+          </Carousel.Item>
 
-      {/* Middle Section: Filter and Product Cards */}
+          <Carousel.Item>
+            <img
+              className="d-block w-100 carousel-image"
+              src="./assets/SpyXFamily.jpg"
+              alt="Second Slide"
+            />
+            <Carousel.Caption>
+              <h3>Spy X Family Collection</h3>
+              <p>Exclusive products for Spy X Family fans!</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+
+          <Carousel.Item>
+            <img
+              className="d-block w-100 carousel-image"
+              src="./assets/LuffyCarousel.jpg"
+              alt="Third Slide"
+            />
+            <Carousel.Caption>
+              <h3>OnePiece Arrivals</h3>
+              <p>Discover the latest Luffy Gear 5 collection.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+      </section>
+      {/* Middle Section */}
       <section id="products" className="middle-section">
-        {/* Left: Filter */}
         <div className="left-filter">
           <h3>Filter Options</h3>
           <ul>
@@ -30,46 +66,39 @@ function OtakuSpa() {
             <li>Size</li>
           </ul>
         </div>
-
-        {/* Right: Product Cards */}
         <div className="right-products">
           <h2>Our Products</h2>
           <div className="card-grid">
-            {/* Display 6 Product Cards */}
             {[...Array(6)].map((_, index) => (
-              <Card
-                key={index}
-                image={Tshirt}
-                title={`Product Title ${index + 1}`}
-                description="Some description of the product."
-                link="/details"
-              />
+              <div key={index} className="card">
+                <img src="./assets/tshirt.jpg" alt="Product" />
+                <h4>Product Title {index + 1}</h4>
+                <p>Some description of the product.</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Bottom Section: Best Sellers */}
+      {/* Best Sellers Section */}
       <section id="best-sellers" className="best-sellers">
         <h2>Best Sellers</h2>
         <div className="card-grid">
-          {/* Best Sellers Cards */}
-          <Card
-            image={SpyXFamily}
-            title="Spy X Family"
-            description="Best Seller Product"
-            link="/details"
-          />
-          <Card
-            image={BlueLock}
-            title="Blue Lock"
-            description="Best Seller Product"
-            link="/details"
-          />
+          <div className="card clickable-card">
+            <img src="./assets/SpyXFamily.jpg" alt="Spy X Family" />
+            <p>Spy X Family</p>
+          </div>
+          <div className="card clickable-card">
+            <img src="./assets/BlueLock.jpeg" alt="Blue Lock" />
+            <p>Blue Lock</p>
+          </div>
         </div>
       </section>
+      {/* Footer */}
+      <footer className="footer">
+        <p>© 2024 OtakuMart. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
 
-export default OtakuSpa;
+export default OtakuMart;
