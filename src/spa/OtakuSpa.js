@@ -3,89 +3,69 @@ import "../spa/style.css";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FilterList from "../components/FilterList";
+import { OtakuMartContent } from "../content/DynamicContent"; // Import dynamic content
 
 function OtakuMart() {
+  const { heroCarousel, products, bestSellers, footer } = OtakuMartContent;
+
   return (
     <div>
-      {/* Header */}
-      {/* <header className="header">
-        <h1>OtakuMart</h1>
-      </header> */}
-      {/* Hero Section with Carousel */}
+      {/* Hero Section */}
       <section id="hero" className="hero-section">
         <Carousel>
-          <Carousel.Item>
-            <img
-              className="d-block w-100 carousel-image"
-              src="./assets/HeroBanner.jpg"
-              alt="First Slide"
-            />
-            <Carousel.Caption>
-              <h3>Welcome to OtakuMart</h3>
-              <p>Your one-stop shop for anime merchandise!</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-
-          <Carousel.Item>
-            <img
-              className="d-block w-100 carousel-image"
-              src="./assets/SpyXFamily.jpg"
-              alt="Second Slide"
-            />
-            <Carousel.Caption>
-              <h3>Spy X Family Collection</h3>
-              <p>Exclusive products for Spy X Family fans!</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-
-          <Carousel.Item>
-            <img
-              className="d-block w-100 carousel-image"
-              src="./assets/LuffyCarousel.jpg"
-              alt="Third Slide"
-            />
-            <Carousel.Caption>
-              <h3>OnePiece Arrivals</h3>
-              <p>Discover the latest Luffy Gear 5 collection.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
+          {heroCarousel.map((item, index) => (
+            <Carousel.Item key={index}>
+              <img
+                className="d-block w-100 carousel-image"
+                src={item.image}
+                alt={`Slide ${index + 1}`}
+              />
+              <Carousel.Caption>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))}
         </Carousel>
       </section>
+
       {/* Middle Section */}
       <section id="products" className="middle-section">
         <div className="left-filter">
           <FilterList />
         </div>
         <div className="right-products">
-          <h2>Our Products</h2>
+          <h2>{products.heading}</h2>
           <div className="card-grid">
-            {[...Array(6)].map((_, index) => (
+            {products.items.map((product, index) => (
               <div key={index} className="card">
-                <img src="./assets/tshirt.jpg" alt="Product" />
-                <h4>Product Title {index + 1}</h4>
-                <p>Some description of the product.</p>
+                <img src={product.image} alt={`Product ${index + 1}`} />
+                <h4>
+                  {product.title} {index + 1}
+                </h4>
+                <p>{product.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
+
       {/* Best Sellers Section */}
       <section id="best-sellers" className="best-sellers">
-        <h2>Best Sellers</h2>
+        <h2>{bestSellers.heading}</h2>
         <div className="card-grid">
-          <div className="card clickable-card">
-            <img src="./assets/SpyXFamily.jpg" alt="Spy X Family" />
-            <p>Spy X Family</p>
-          </div>
-          <div className="card clickable-card">
-            <img src="./assets/BlueLock.jpeg" alt="Blue Lock" />
-            <p>Blue Lock</p>
-          </div>
+          {bestSellers.items.map((item, index) => (
+            <div key={index} className="card clickable-card">
+              <img src={item.image} alt={item.title} />
+              <p>{item.title}</p>
+            </div>
+          ))}
         </div>
       </section>
+
       {/* Footer */}
       <footer className="footer">
-        <p>© 2024 OtakuMart. All rights reserved.</p>
+        <p>{footer.text}</p>
       </footer>
     </div>
   );

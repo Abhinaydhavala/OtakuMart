@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css"; // Import a CSS file for styling
-import About from "../content/DynamicContent";
+import { About } from "../content/DynamicContent";
 
 function AboutUs() {
   const { header, story, mission, team } = About;
