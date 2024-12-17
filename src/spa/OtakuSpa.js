@@ -2,19 +2,15 @@ import React from "react";
 import "../spa/style.css";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import FilterList from "../components/FilterList";
 
 function OtakuMart() {
   return (
     <div>
       {/* Header */}
-      <header className="header">
+      {/* <header className="header">
         <h1>OtakuMart</h1>
-        <nav>
-          <a href="#hero">Home</a>
-          <a href="#products">Products</a>
-          <a href="#best-sellers">Best Sellers</a>
-        </nav>
-      </header>
+      </header> */}
       {/* Hero Section with Carousel */}
       <section id="hero" className="hero-section">
         <Carousel>
@@ -58,13 +54,7 @@ function OtakuMart() {
       {/* Middle Section */}
       <section id="products" className="middle-section">
         <div className="left-filter">
-          <h3>Filter Options</h3>
-          <ul>
-            <li>Category</li>
-            <li>Price</li>
-            <li>Color</li>
-            <li>Size</li>
-          </ul>
+          <FilterList />
         </div>
         <div className="right-products">
           <h2>Our Products</h2>
